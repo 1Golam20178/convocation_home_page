@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navbar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+
+
+        setTimeout(function() {
+            document.getElementById('loading-spinner').style.display = 'none';
+            document.getElementById('main-content').classList.remove('hidden');
+        }, 1000); // 2 seconds
+
+
+
+    const convocationDate = new Date("Oct 29, 2024 00:00:00").getTime();
+
+    const countdownFunction = setInterval(() => {
+    const now = new Date().getTime();
+            const timeRemaining = convocationDate - now;
+
+
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
+
+            if (timeRemaining < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "The Convocation has started!";
+            }
+        }, 1000);
+
+
+
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        window.onscroll = function () {
+            const scrollButton = document.getElementById('scroll-to-top');
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                scrollButton.classList.remove('invisible', 'opacity-0');
+            } else {
+                scrollButton.classList.add('invisible', 'opacity-0');
+            }
+        };
+    </script>
+    <style>
+        .flex a i {
+            color: white;
+            transition: color 0.3s ease;
+        }
+
+        .flex a:hover i {
+            color: #dc6803;
+        }
+
+
+
+
+
+
+        #countdown {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #days, #hours, #minutes, #seconds {
+            padding: 5px 10px;
+
+            color: white;
+            border-radius: 5px;
+            margin: 5px;
+        }
+
+
+
+        .overlay-content {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 800px;
+            box-sizing: border-box;
+        }
+
+
+
+        .overlay-content h1 {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .overlay-content p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+
+
+
+
+        .ptc-speaker-card {
+            background-color: white;
+            border: 2px solid;
+            border-radius: 8px;
+            padding: 16px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+        .ptc-speaker-card:hover {
+            transform: scale(1.05);
+        }
+
+        .ptc-speaker-name {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        .ptc-speaker-designation {
+            font-size: 1rem;
+            color: #555;
+        }
+
+
+        .speakers-pic {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .speaker-img-large {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .speaker-img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+
+
+        .gap-4 {
+            gap: 16px;
+        }
+
+        .mt-6 {
+            margin-top: 24px;
+        }
+
+
+
+
+
+
+        .video-container video {
+            position: absolute;
+            top: -120px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: scale(0);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        .spinner-dot {
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .spinner-dot:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .spinner-dot:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+
+
+    </style>
+</head>
+
+<body class=" flex  flex-col min-h-screen ">
+
+<div id="loading-spinner"  class="flex items-center justify-center h-screen bg-gray-100 space-x-2 ">
+    <div class="w-4 h-4 bg-green-500 rounded-full spinner-dot"></div>
+    <div class="w-4 h-4 bg-red-500 rounded-full spinner-dot"></div>
+    <div class="w-4 h-4 bg-yellow-500 rounded-full spinner-dot"></div>
+</div>
+
+
+
+<!-- Navbar -->
+<!-- Navbar -->
+<div  id="main-content" class="hidden">
+<header >
+
+    <nav  class="bg-[#112669] h-20 flex items-center justify-between px-6 shadow-md fixed top-0 left-0 w-full z-10  ">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <a href="https://ibb.co.com/Fz0bpHC"><img class="h-16 mr-4"  src="pic/172552249366d9623dc9fe5.png" alt="Copy-of-PNG-02" border="0"></a>
+
+        </div>
+
+        <!-- Desktop Navigation Links -->
+        <div class="hidden md:flex space-x-6 text-xs font-serif">
+            <a href="#" class="text-white hover:text-gray-300">HOME</a>
+            <a href="#" class="text-white hover:text-gray-300">PAGES</a>
+            <a href="#" class="text-white hover:text-gray-300">SPEAKER</a>
+            <a href="#" class="text-white hover:text-gray-300">SCHEDULE</a>
+            <a href="#" class="text-white hover:text-gray-300">SPONSOR</a>
+            <a href="#" class="text-white hover:text-gray-300">NEWS</a>
+            <a href="#" class="text-white hover:text-gray-300">CONTACT</a>
+        </div>
+
+
+
+        <a href="https://ums.seu.edu.bd/sign-in?redirectURL=%2Fdashboard"
+           class=" bg-[#dc6803] text-white px-4 py-2 rounded-md hover:bg-[#dc6803]">
+            Registration
+        </a>
+
+
+
+        <div class="md:hidden flex items-center ">
+            <button onclick="toggleMenu()" class="text-white focus:outline-none">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </nav>
+
+
+    <div id="mobile-menu" class="hidden md:hidden bg-[#112669] text-white flex flex-col text-sm space-y-2 px-4 py-2 mt-20"> <!-- Added margin-top to avoid overlap -->
+        <a href="#" class="hover:text-gray-300">HOME</a>
+        <a href="#" class="hover:text-gray-300">PAGES</a>
+        <a href="#" class="hover:text-gray-300">SPEAKER</a>
+        <a href="#" class="hover:text-gray-300">SCHEDULE</a>
+        <a href="#" class="hover:text-gray-300">SPONSOR</a>
+        <a href="#" class="hover:text-gray-300">NEWS</a>
+        <a href="#" class="hover:text-gray-300">CONTACT</a>
+           </div>
+</header>
+
+
+<main class="flex-grow bg-white">
+    <button
+            id="scroll-to-top"
+            class="fixed bottom-4 animate-bounce right-4 p-3 bg-[#2d3092] rounded-full text-white text-xl invisible opacity-0"
+            onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+
+    <div class="  h-screen overflow-hidden  ">
+        <video class="w-full h-full object-cover" autoplay muted loop>
+            <source src="pic/WhatsApp Video 2024-10-03 at 10.47.03 AM.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay-content ml-[50%]  lg:ml-[40%]  font-serif ">
+            <h1 >8<sup>th </sup> Convocation of Southeast University</h1>
+
+
+            <div class="w-full ">
+                <div class="text-2xl font-bold font-serif" id="">
+                    <span class="text-4xl" id="days"></span>Days
+                    <span  class="text-4xl"  id="hours"></span>Hours
+                    <span class="text-4xl"  id="minutes"></span>Minutes
+                    <span  class="text-4xl"  id="seconds"></span>Seconds
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="h-auto w-full bg-white py-12">
+
+        <div class="flex flex-col md:flex-row justify-between mt-24  md:-mt-[20px] items-center mb-8 lg:p-20 mx-8">
+
+            <div class="w-11/12 md:w-8/12">
+                <h2 class="text-[#141b34] text-4xl md:text-7xl font-semibold">
+                    Our <span class="text-[#311873]">Speakers</span>
+                </h2>
+                <h2 class="text-[#141b34]  md:p-3 pt-6 ">"Welcome to our platform dedicated to building remarkable speakers!
+                    Here, we focus on enhancing communication skills,
+                    empowering individuals to inspire and influence.
+                    Join us in creating impactful voices for the future!"</h2>
+            </div>
+
+            <button class="mt-4 text-[#141b34]  md:mt-0 border border-gray-400 hover:border-[#311873] rounded-full px-10 py-3 font-serif flex items-center">
+                See All Speakers
+                <span class="ml-4 text-white">
+                <i class="fas text-[#141b34] fa-arrow-up-right-from-square"></i>
+            </span>
+            </button>
+        </div>
+
+
+        <div class="speakers-pic mb-8 md:mb-2 bg-[#fcfaff]  p-8">
+
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="ptc-speaker-card">
+                    <a href="https://imgbb.com/">
+                        <img class="speaker-img-large" src="https://i.ibb.co/KKtv0B3/Prof-Yusuf-Mahbubul-Islam-VC.jpg" alt="Prof Yusuf Mahbubul Islam VC">
+                    </a>
+                    <h3 class="ptc-speaker-name text-gray-800 text-center">Prof. Yusuf Mahbubul Islam, Ph.D</h3>
+                    <p class="ptc-speaker-designation text-gray-500 text-center"> Vice Chancellor</p>
+                </div>
+                <div class="ptc-speaker-card">
+                    <a href="https://imgbb.com/">
+                        <img class="speaker-img-large" src="https://i.ibb.co/QXdTdJb/DSC04571-E.jpg" alt="DSC04571-E">
+                    </a>
+                    <h3 class="ptc-speaker-name text-gray-800 text-center">Prof. M. Mofazzal Hossain, PhD</h3>
+                    <p class="ptc-speaker-designation text-gray-500 text-center">Pro Vice Chancellor</p>
+
+                </div>
+            </div>
+
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                <div class="ptc-speaker-card">
+                    <a href="https://imgbb.com/">
+                        <img class="speaker-img" src="https://i.ibb.co/PDW6NK1/Mohammad-Tarik-Al-Jalil.jpg" alt="Mohammad Tarik Al Jalil">
+                    </a>
+                    <h3 class="ptc-speaker-name text-gray-800 text-center">Mr. Mohammad Tarik Al Jalil</h3>
+                    <p class="ptc-speaker-designation text-gray-500 text-center">Secretary</p>
+                </div>
+                <div class="ptc-speaker-card">
+                    <a href="https://imgbb.com/">
+                        <img class="speaker-img" src="https://i.ibb.co/nDGz2Vn/DSC02017-E.jpg" alt="Speaker Image">
+                    </a>
+                    <h3 class="ptc-speaker-name text-gray-800 text-center">Maj Gen Kazi Fakhruddin Ahmed, SPP, psc (Retd)</h3>
+                    <p class="ptc-speaker-designation text-gray-500 text-center">Registrar</p>
+                </div>
+                <div class="ptc-speaker-card">
+                    <a href="https://imgbb.com/">
+                        <img class="speaker-img" src="https://i.ibb.co/s29Hjtb/Engr-Muhammad-Abul-Bashar.jpg" alt="Engr Muhammad Abul Bashar">
+                    </a>
+                    <h3 class="ptc-speaker-name text-gray-800 text-center">Mr. Muhammad Abul Bashar</h3>
+                    <p class="ptc-speaker-designation text-gray-500 text-center">Director Operations</p>
+                </div>
+                <div class="ptc-speaker-card">
+                    <a href="https://imgbb.com/">
+                        <img class="speaker-img" src="https://i.ibb.co/3pzsWjK/Dr-Farhana-Helal-Mehtab.jpg" alt="Dr Farhana Helal Mehtab">
+                    </a>
+                    <h3 class="ptc-speaker-name text-gray-800 text-center">
+                        Dr. Farhana Ferdousi, Ph.D</h3>
+                    <p class="ptc-speaker-designation text-gray-500 text-center">Director, IRT</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="h-auto w-full bg-white py-12">
+        <div class="flex flex-col md:flex-row justify-between -mt-[120px] items-center mb-8 lg:p-20 mx-8">
+            <div class="w-11/12 md:w-8/12">
+                <h2 class="text-[#141b34] text-4xl md:text-7xl font-semibold">
+                    Event <span class="text-[#311873]">Schedule</span>
+                </h2>
+                <h2 class="text-[#141b34] md:p-3 pt-6 ">
+                    "Welcome to the schedule for our Convocation Day!
+                    Join us as we celebrate achievements,
+                    honor graduates, and share memorable moments.
+                    Let’s make this day remarkable together!"
+                </h2>
+            </div>
+            <div>
+
+            </div>
+
+
+        </div>
+
+        <div class="p-2 md:p-10 bg-[#fcfaff] rounded-xl mx-8">
+            <div class="flex justify-between items-center mb-4">
+                <div class="flex space-x-4">
+                    <button class="bg-black text-white py-2 px-4 rounded-lg">All Topics</button>
+                    <button class="text-[#311873] py-2 px-4">Wednesday</button>
+
+                </div>
+            </div>
+
+            <div class="bg-white   rounded-xl shadow p-6 mb-4 hover:shadow-lg transition-shadow duration-300">
+                <div class="flex  items-center justify-between">
+                    <span class="text-[#311873] text-lg font-semibold">8:00 AM</span>
+                    <span class="text-gray-500">1 Hours</span>
+                </div>
+                <h3 class="text-black text-xl font-bold mt-2  mb-4">Workshop Registration and Breakfast ☕</h3>
+                <p >Start your special day with our Convocation Breakfast, a warm gathering to celebrate achievements and connect with fellow graduates, faculty, and guests. Enjoy a delightful spread of delicious breakfast items, freshly brewed coffee, and refreshing beverages. It's the perfect moment to share your excitement, exchange stories, and begin the day with a spirit of camaraderie before the official convocation ceremonies commence. Let’s toast to your hard-earned success and the journey ahead!
+                </p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow p-6 mb-4 hover:shadow-lg transition-shadow duration-300">
+                <div class="flex items-center justify-between">
+                    <span class="text-[#311873] text-lg font-semibold">9:00 AM</span>
+                    <span class="text-gray-500">1 Hours </span>
+                </div>
+                <h3 class="text-black text-xl font-bold mt-2 mb-4">
+                    Special Person Speech
+                </h3>
+                <p >In a world filled with voices, the words of this special person resonate deeply. Their valuable speech embodies wisdom, inspiration, and insight, encouraging us to reflect on our journeys and aspirations. With a unique perspective, they touch on themes of resilience, empathy, and the importance of community. Their message not only motivates but also fosters a sense of connection, reminding us of the power we hold to effect positive change. As they share their experiences and knowledge, listeners are left with a renewed sense of purpose and the courage to pursue their dreams.
+
+                </p>
+                <div class="flex grid grid-cols-1 md:grid-cols-2 mt-2 md:mt-8">
+                    <div class="flex items-center space-x-2">
+                        <img src="https://i.ibb.co/KKtv0B3/Prof-Yusuf-Mahbubul-Islam-VC.jpg" alt="Brian" class="w-8 h-8 rounded-full">
+                        <p>Prof. Yusuf Mahbubul Islam,Ph.D ,Vice Chancellor</p>
+                    </div>
+                    <div class="flex items-center mt-4 md:mt-0 space-x-2">
+                        <img src="https://i.ibb.co/QXdTdJb/DSC04571-E.jpg" alt="Lex" class="w-8 h-8 rounded-full">
+                        <p>Prof. M. Mofazzal Hossain, PhD, Pro Vice Chancellor</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-xl shadow p-6 mb-4 hover:shadow-lg transition-shadow duration-300">
+                <div class="flex items-center justify-between">
+                    <span class="text-[#311873] text-lg font-semibold">10:00 AM</span>
+                    <span class="text-gray-500">3 Hours </span>
+                </div>
+                <h3 class="text-black text-xl font-bold mt-2 mb-4">
+                    Honoring Graduates: Certificates and Medals
+                </h3>
+                <p >During the convocation ceremony, graduates are recognized for their hard work and dedication. The graduation certificate signifies the culmination of years of study and represents academic achievement. Graduates who excel academically may be awarded a gold medal, honoring their exceptional performance and commitment to excellence. These awards not only celebrate individual accomplishments but also inspire fellow students to strive for greatness. Each certificate and medal reflects the collective spirit of our academic community, emphasizing the importance of perseverance, knowledge, and growth. As graduates receive their honors, they embark on new journeys, carrying with them the pride of their achievements and the promise of future success.
+                </p>
+                <div class="flex grid grid-cols-1 md:grid-cols-2   mt-2 md:mt-8">
+                    <div class="flex items-center space-x-2">
+                        <img src="https://cdn.vectorstock.com/i/1000v/40/19/gold-medal-vector-26244019.jpg" alt="Brian" class="w-8 h-8 rounded-full">
+                        <p>Gold Medals</p>
+                    </div>
+                    <div class="flex items-center mt-4 md:mt-0 space-x-2">
+                        <img src="https://media.istockphoto.com/id/891698738/photo/mortar-and-degree.jpg?s=612x612&w=0&k=20&c=OBPBQicp4iU7HmCRBEr8SVcAB3iRF79xF0dh5y3L4DY=" alt="Lex" class="w-8 h-8 rounded-full">
+                        <p>Certificates</p>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="bg-white rounded-xl shadow p-6 mb-4 hover:shadow-lg transition-shadow duration-300">
+                <div class="flex items-center justify-between">
+                    <span class="text-[#311873] text-lg font-semibold">1:00 AM</span>
+                    <span class="text-gray-500">1 Hours</span>
+                </div>
+                <h3 class="text-black text-xl font-bold mt-2">Lunch 🍕</h3>
+            </div>
+
+            <div class="bg-white rounded-xl shadow p-6 mb-4 hover:shadow-lg transition-shadow duration-300">
+                <div class="flex items-center justify-between">
+                    <span class="text-[#311873] text-lg font-semibold">2:00 PM</span>
+                    <span class="text-gray-500">2 Hours</span>
+                </div>
+                <h3 class="text-black text-xl font-bold mt-2 mb-4">Voices of Inspiration: Insights from a Distinguished Speaker</h3>
+                <p >In this compelling address, the speaker shares transformative insights drawn from personal experiences and professional journeys. Their eloquent delivery captivates the audience, weaving together stories of triumph, challenges, and lessons learned along the way. With a focus on resilience and growth, they encourage listeners to embrace change and pursue their passions fearlessly. The speech not only inspires but also fosters a sense of community, inviting everyone to reflect on their paths and aspirations. As the speaker concludes, their powerful message lingers, motivating all to take actionable steps toward their goals.
+                </p>
+
+                <div class="flex grid grid-cols-1 md:grid-cols-3 mt-2 md:mt-8">
+                    <div class="flex items-center space-x-2">
+                        <img src="https://i.ibb.co/s29Hjtb/Engr-Muhammad-Abul-Bashar.jpg" alt="Robertson" class="w-8 h-8 rounded-full">
+                        <p>Mr. Muhammad Abul Bashar, Director Operations</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <img src="https://i.ibb.co/3pzsWjK/Dr-Farhana-Helal-Mehtab.jpg" alt="Tim" class="w-8 h-8 rounded-full">
+                        <p> Dr. Farhana Ferdousi, Ph.D, Director, IRT</p>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <img src="https://i.ibb.co/PDW6NK1/Mohammad-Tarik-Al-Jalil.jpg" alt="Lex" class="w-8 h-8 rounded-full">
+                        <p>Mr. Mohammad Tarik Al Jalil, Secretary </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-[#112669]">
+    <div class="border-b-2 border-[#dc6803]">
+        <div class="text-3xl sm:text-5xl text-white font-serif p-4 sm:p-8 font-bold text-center">
+            <h2>Have a question?</h2>
+        </div>
+
+        <div class="text-center pb-4 sm:pb-8">
+            <a class="py-2 sm:py-4 rounded-xl bg-[#dc6803]    text-black inline-block" href="/graduation/contact-us/">
+                <span class="p-3"> Contact us about graduation</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 lg:gap-4">
+        <div class="text-white font-serif p-4 sm:p-8 text-center">
+            <h2>International Collaboration</h2>
+            <img class="h-20 sm:h-24 mt-4 w-20 sm:w-32 mx-auto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiMgZp5dMBQ7fP3JTndmnv41uTXWIxFo6kYA&s" alt="Robi Logo">
+        </div>
+
+        <div class="text-white font-serif p-4 sm:p-8 text-center">
+            <h2>International Collaboration</h2>
+            <img class="h-20 sm:h-24 mb-2 mt-4 w-20 sm:w-32 mx-auto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW4FA4SjGf_wg0lYQYroRDGNtn6vB4cMUJOA&s" alt="Sonali Bank Logo">
+        </div>
+
+        <div class="text-white font-serif p-4 sm:p-8 mb-10 sm:mb-20 text-center">
+            <h2>International Collaborationr</h2>
+            <img class="h-20 sm:h-24 mt-4 w-20 sm:w-32 mx-auto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOEknu7G0O-NmWf1z6W03H-9vWQ-he6gpNtA&s" alt="Dutch Bangla Bank Logo">
+        </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-between h-auto sm:h-auto text-center sm:text-left">
+        <div class="border-t-2 border-[#dc6803]  p-4 sm:p-8 w-full sm:w-[40%] font-serif text-gray-300">
+            <h2>Research</h2>
+            <a href="https://seu.kolpolok.com/programs"><p>Undergraduate Programs</p></a>
+            <a href="https://seu.kolpolok.com/programs"><p>Graduate Programs</p></a>
+            <a href="https://seu.kolpolok.com/programs"><p>Undergraduate Programs</p></a>
+            <a href="https://seu.kolpolok.com/programs"><p>International</p></a>
+            <a href="https://seu.kolpolok.com/programs"><p>Scholarship</p></a>
+
+        </div>
+
+        <div class="flex flex-row justify-center sm:justify-between items-center text-3xl p-4 sm:p-8 border-t-2 sm:border-l-2 sm:border-r-2 border-[#dc6803]  w-full sm:w-[450px] h-auto sm:h-[80px] sm:-mt-20 rounded-none sm:rounded-tr-[70px]">
+            <a href="https://www.facebook.com"><i class="fab fa-facebook text-white mr-2"></i></a>
+            <a href="https://www.youtube.com/"><i class="fab fa-youtube text-white mr-2"></i></a>
+            <a href="https://www.instagram.com/"><i class="fab fa-instagram text-white mr-2"></i></a>
+            <a href="https://x.com/?lang=en"><i class="fab fa-twitter text-white mr-2"></i></a>
+            <a href="https://x.com/?lang=en"><i class="fab fa-linkedin text-white"></i></a>
+        </div>
+
+        <div class="border-t-2 border-[#dc6803]  p-4 sm:p-8 w-full sm:w-[40%] font-serif text-gray-300">
+            <h2>Southeast University</h2>
+            <p>252, Tejgaon Industrial Area, Dhaka-1208, Bangladesh</p>
+            <p>Mobile: 01766348518, 01632261081</p>
+            <p>Tel: +8802226603610-7, Ext: 121-124</p>
+            <p>Contact us</p>
+        </div>
+    </div>
+
+    <div class="border-t-2 border-[#dc6803]  text-center text-gray-400 p-4">
+        <p>© 2024 All rights reserved | This template is made with <i class="fas fa-heart text-red-500"></i> by ISDT</p>
+    </div>
+</footer>
+</div>
+</body>
+
+</html>

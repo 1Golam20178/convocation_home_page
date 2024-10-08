@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Scroll Animation</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for animation */
+        .animate-fade-in {
+            opacity: 0; /* Start with invisible */
+            transform: translateY(20px); /* Slide up effect */
+            transition: opacity 0.8s ease, transform 0.8s ease; /* Smooth transition */
+        }
+        .show {
+            opacity: 1; /* Fade in */
+            transform: translateY(0); /* Move to original position */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+<header class="bg-indigo-600 text-white py-6 text-center">
+    <h1 class="text-4xl font-bold">Smooth Scroll Animation Example</h1>
+</header>
+
+<main class="p-6 space-y-16">
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 1</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 2</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 3</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 4</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 1</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 2</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 3</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 4</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 1</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 2</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 3</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 4</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 1</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 2</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 3</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 4</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 1</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 2</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 3</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+    <section class="animate-fade-in">
+        <h2 class="text-3xl font-semibold text-indigo-700">Section 4</h2>
+        <p class="text-gray-700">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor.</p>
+    </section>
+
+</main>
+
+<script>
+    // Function to check if an element is in the viewport
+    function isElementInViewport(el) {
+        const rect = el.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.bottom >= 0
+        );
+    }
+
+    // Function to add the 'show' class to elements in view
+    function handleScrollAnimation() {
+        const animatedElements = document.querySelectorAll('.animate-fade-in');
+        animatedElements.forEach((element) => {
+            if (isElementInViewport(element)) {
+                element.classList.add('show');
+            }
+        });
+    }
+
+    // Listen for scroll events
+    window.addEventListener('scroll', handleScrollAnimation);
+    window.addEventListener('load', handleScrollAnimation);
+</script>
+
+</body>
+</html>
